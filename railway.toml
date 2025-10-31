@@ -1,6 +1,6 @@
 [build]
 builder = "nixpacks"
-buildCommand = "composer install"
+buildCommand = "composer install --no-dev --optimize-autoloader"
 
 [start]
 cmd = [
@@ -9,5 +9,6 @@ cmd = [
   "echo 'ServerName localhost' >> /etc/apache2/apache2.conf && \
    sed -i 's/80/8080/g' /etc/apache2/ports.conf && \
    sed -i 's/:80/:8080/g' /etc/apache2/sites-enabled/000-default.conf && \
+   sed -i 's|DocumentRoot /var/www/html|DocumentRoot /var/www/html/public|g' /etc/apache2/sites-enabled/000-default.conf && \
    apache2ctl -D FOREGROUND"
 ]
