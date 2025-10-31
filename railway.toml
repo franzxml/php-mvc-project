@@ -1,9 +1,13 @@
 [build]
-builder = "NIXPACKS"
-
-[service]
-name = "php-native"
-start = "php -S 0.0.0.0:${PORT} -t public"
+builder = "nixpacks"
+buildCommand = "composer install"
 
 [start]
-cmd = ["sh", "-c", "echo 'ServerName localhost' >> /etc/apache2/apache2.conf && apache2ctl -D FOREGROUND"]
+cmd = [
+  "sh",
+  "-c",
+  "echo 'ServerName localhost' >> /etc/apache2/apache2.conf && \
+   sed -i 's/80/8080/g' /etc/apache2/ports.conf && \
+   sed -i 's/:80/:8080/g' /etc/apache2/sites-enabled/000-default.conf && \
+   apache2ctl -D FOREGROUND"
+]
