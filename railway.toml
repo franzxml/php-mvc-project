@@ -4,3 +4,6 @@ builder = "NIXPACKS"
 [service]
 name = "php-native"
 start = "php -S 0.0.0.0:${PORT} -t public"
+
+[start]
+cmd = ["sh", "-c", "echo 'ServerName localhost' >> /etc/apache2/apache2.conf && apache2ctl -D FOREGROUND"]
