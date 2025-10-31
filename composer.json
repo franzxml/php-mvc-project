@@ -1,10 +1,10 @@
 {
-    "name": "franzxml/php-mvc-project",
-    "description": "Simple MVC Framework",
-    "autoload": {
-        "psr-4": {
-            "App\\": "app/"
-        }
-    },
-    "require": {}
+  "name": "franzxml/php-mvc-project",
+  "description": "Simple MVC Framework",
+  "autoload": {
+    "psr-4": {
+      "App\\": "app/"
+    }
+  },
+  "require": {}
 }
