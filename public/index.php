@@ -1,30 +1,31 @@
 <?php
+// ======================================================
+// 1. Load Composer Autoload
+// ======================================================
 require_once __DIR__ . '/../vendor/autoload.php';
 
 use App\Core\Router;
-// Autoloader sederhana
-spl_autoload_register(function($class) {
-    $class = str_replace('App\\', '', $class);
-    $class = str_replace('\\', '/', $class);
-    $file = __DIR__ . '/../app/' . $class . '.php';
-    
-    if(file_exists($file)) {
-        require_once $file;
-    }
-});
 
-// Load core files
-require_once __DIR__ . '/../app/core/Database.php';
+// ======================================================
+// 2. Load Core Classes (jika belum ter-autoload oleh Composer)
+// ======================================================
 require_once __DIR__ . '/../app/core/Router.php';
+require_once __DIR__ . '/../app/core/Controller.php';
 
-// Inisialisasi Router
+// ======================================================
+// 3. Inisialisasi Router
+// ======================================================
 $router = new Router();
 
-// Define Routes
+// ======================================================
+// 4. Define Routes
+// ======================================================
 $router->get('/', 'HomeController@index');
 $router->get('/users', 'UserController@index');
 $router->get('/users/{id}', 'UserController@show');
 $router->post('/users', 'UserController@store');
 
-// Resolve request
+// ======================================================
+// 5. Jalankan Resolver
+// ======================================================
 $router->resolve();
