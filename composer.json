@@ -1,10 +1,12 @@
 {
   "name": "franzxml/php-mvc-project",
   "description": "Simple MVC Framework",
+  "require": {
+    "php": "^8.1"
+  },
   "autoload": {
     "psr-4": {
       "App\\": "app/"
     }
-  },
-  "require": {}
+  }
 }
